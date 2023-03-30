@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -8,26 +7,26 @@ public class UIManager : MonoBehaviour
 
     public TextMeshProUGUI mainButtonText, titleText;                       // Texts that might have to be changed later
 
-    public Canvas numbersInventory;                                         // Showing the inventory UI
+    public Canvas numbersInventory;                                         // Inventory UI element
 
-    public Button mainButton, restartButton;
+    public Button mainButton, restartButton;                                // Main buttons
 
-    public Button[] numberButtons;
+    public Button[] numberButtons;                                          // Array of number buttons
 
-    public Sprite defaultNumberButtonSprite;
+    public Sprite defaultNumberButtonSprite;                               // This is the default background sprite (image) for the number buttons
 
-    public Slider progressSlider;
+    public Slider progressSlider;                                           // Assigning the progress slider (from UI)
  
-    [SerializeField] bool isInventoryOpen = false;                                            // Check variable to see if Inventory is open or not
+    [SerializeField] bool isInventoryOpen = false;                           // Check variable to see if Inventory is open or not
 
     public void Start()
     {
-        ResetUI();
+        ResetUI();                                                           // Resetting the UI
     }
 
     public void ToggleInventory()
     {
-        isInventoryOpen = !isInventoryOpen;
+        isInventoryOpen = !isInventoryOpen;                                  // Change inventory's flag value (Switching between open & closed)
 
         if (isInventoryOpen)
         {
@@ -38,12 +37,16 @@ public class UIManager : MonoBehaviour
             mainButtonText.text = "COLLECT";
         }
 
-
+        // Hiding invisible UI elements
         titleText.gameObject.SetActive(!isInventoryOpen);
         
+        
+        // Toggling inventory UI based on where it is open or not
         numbersInventory.gameObject.SetActive(isInventoryOpen);
     }
 
+
+    // RESETING THE UI
     public void ResetUI()
     {
         titleText.text = "COUNT OUT LOUD";

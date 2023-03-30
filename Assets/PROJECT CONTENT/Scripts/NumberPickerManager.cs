@@ -4,16 +4,15 @@ using UnityEngine.UI;
 
 public class NumberPickerManager : MonoBehaviour
 {
-    public UIManager uiManager;
+    public UIManager uiManager;                                             // Accessing the UI Manager Class
 
     public GenerateNumber generatedNumber;                                  // Accessing the Generated Number Class
 
     public Sprite numCollectedSprite;                                       // Button background - Which gets updated once the user gets the number right
 
-    // Define the dictionary to map tags to numbers
-    Dictionary<string, int> tagToNumberMap;
+    Dictionary<string, int> tagToNumberMap;                                  // Defining the dictionary to map tags to numbers
 
-    public float progress = 0f;
+    public float progress = 0f;                                              // Slider progress
 
     // Start is called before the first frame update
     void Start()
@@ -39,10 +38,10 @@ public class NumberPickerManager : MonoBehaviour
     }
 
 
-
+    // THIS METHOD HANDLES PICKING NUMBERS WHEN INVENTORY IS OPEN
     public void PickTheNumber(string buttonTag)
     {
-        // Get the corresponding number from the dictionary
+        // Getting the corresponding number from the dictionary
         int pickedNum;
         if (tagToNumberMap.TryGetValue(buttonTag, out pickedNum))
         {
@@ -51,24 +50,24 @@ public class NumberPickerManager : MonoBehaviour
             {
                 Debug.Log("Yay!");
 
-                uiManager.progressSlider.value += 0.1f;
+                uiManager.progressSlider.value += 0.1f;                 // Correct number picked; Updating progress
 
-                uiManager.numberButtons[pickedNum - 1].image.sprite = numCollectedSprite;
+                uiManager.numberButtons[pickedNum - 1].image.sprite = numCollectedSprite;       // Changing that button's backgound sprite to show that number has been chosen
 
                 // TO DO: CUE THE PARTICLE EFFECTS
 
-                uiManager.ToggleInventory();
+                uiManager.ToggleInventory();                        // Toggling the inventory - OFF
 
-                generatedNumber.GenerateNumberMain();
+                generatedNumber.GenerateNumberMain();               // Generating another number
             }
             else
             {
-                Debug.Log("Sorry try again!");
+                Debug.Log("Sorry try again!");                      // Wrong button pressed - Don't change anything
             }
         }
         else
         {
-            Debug.LogWarning("No corresponding number found for tag: " + buttonTag);
+            Debug.LogWarning("No corresponding number found for tag: " + buttonTag);        // No button tag was found
         }
     }
 }

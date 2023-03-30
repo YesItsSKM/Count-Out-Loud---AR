@@ -39,6 +39,8 @@ public class GenerateNumber : MonoBehaviour
 
         int randomNum = randomNumberGenerator.Next(1, 11);            // int num = rand.Next(1, 11);
        
+
+        // Keep generating random numbers until it's not yet generated
         while (usedNumbers.Contains(randomNum))
         {
             randomNum = randomNumberGenerator.Next(1, 11);

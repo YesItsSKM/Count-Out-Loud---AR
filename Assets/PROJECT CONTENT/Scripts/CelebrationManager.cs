@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CelebrationManager : MonoBehaviour
@@ -10,7 +8,7 @@ public class CelebrationManager : MonoBehaviour
 
     public GameObject trophy;
 
-    GameObject trophyOnScreen;
+    GameObject trophyOnScreen;                                  // This object holds the trophy. Will use this for spawning & destroying the trophy object
 
     // Start is called before the first frame update
     void Start()
@@ -18,12 +16,7 @@ public class CelebrationManager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // This method handles the game end celebration
     public void GameEndCelebration()
     {
         Debug.Log("THANK YOU FOR PLAYING!!");
@@ -44,6 +37,8 @@ public class CelebrationManager : MonoBehaviour
 
     }
 
+
+    // METHOD FOR RESTARTING THE GAME
     public void RestartGame()
     {
         numberGenerator.usedNumbers.Clear();
