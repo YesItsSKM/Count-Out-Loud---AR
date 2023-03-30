@@ -5,7 +5,6 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public NumberPickerManager numberPickerManager;
 
     public TextMeshProUGUI mainButtonText, titleText;                       // Texts that might have to be changed later
 
@@ -13,6 +12,12 @@ public class UIManager : MonoBehaviour
 
     public Button mainButton, restartButton;
 
+    public Button[] numberButtons;
+
+    public Sprite defaultNumberButtonSprite;
+
+    public Slider progressSlider;
+ 
     [SerializeField] bool isInventoryOpen = false;                                            // Check variable to see if Inventory is open or not
 
     public void Start()
@@ -46,6 +51,13 @@ public class UIManager : MonoBehaviour
         mainButton.gameObject.SetActive(true);
         numbersInventory.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
+
+        progressSlider.value = 0f;
+
+        foreach (Button button in numberButtons)
+        {
+            button.image.sprite = defaultNumberButtonSprite;
+        }
     }
 
 }

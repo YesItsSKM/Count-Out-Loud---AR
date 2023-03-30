@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.Collections;
 
 public class NumberPickerManager : MonoBehaviour
 {
@@ -10,12 +8,12 @@ public class NumberPickerManager : MonoBehaviour
 
     public GenerateNumber generatedNumber;                                  // Accessing the Generated Number Class
 
-    public Button[] numButton;                                              // Array of number buttons
-
     public Sprite numCollectedSprite;                                       // Button background - Which gets updated once the user gets the number right
 
     // Define the dictionary to map tags to numbers
     Dictionary<string, int> tagToNumberMap;
+
+    public float progress = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -32,19 +30,15 @@ public class NumberPickerManager : MonoBehaviour
         }
 
         // Loop through each button and add a listener to its onClick event
-        for (int i = 0; i < numButton.Length; i++)
+        for (int i = 0; i < uiManager.numberButtons.Length; i++)
         {
-            Button button = numButton[i];
+            Button button = uiManager.numberButtons[i];
             button.onClick.RemoveAllListeners(); // Remove any existing listeners
             button.onClick.AddListener(delegate { PickTheNumber(button.tag); });
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
     public void PickTheNumber(string buttonTag)
     {
@@ -57,7 +51,9 @@ public class NumberPickerManager : MonoBehaviour
             {
                 Debug.Log("Yay!");
 
-                numButton[pickedNum - 1].image.sprite = numCollectedSprite;
+                uiManager.progressSlider.value += 0.1f;
+
+                uiManager.numberButtons[pickedNum - 1].image.sprite = numCollectedSprite;
 
                 // TO DO: CUE THE PARTICLE EFFECTS
 

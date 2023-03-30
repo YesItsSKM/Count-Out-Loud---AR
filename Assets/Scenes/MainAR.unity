@@ -1007,6 +1007,20 @@ MonoBehaviour:
   numbersInventory: {fileID: 884216952}
   mainButton: {fileID: 1459437580}
   restartButton: {fileID: 1836727234}
+  numberButtons:
+  - {fileID: 226583987}
+  - {fileID: 1816202918}
+  - {fileID: 1760956527}
+  - {fileID: 1012003165}
+  - {fileID: 1201678109}
+  - {fileID: 867686292}
+  - {fileID: 1797754234}
+  - {fileID: 1412289002}
+  - {fileID: 754826540}
+  - {fileID: 1234104970}
+  defaultNumberButtonSprite: {fileID: 21300050, guid: 1eaee135ce037439d925cee5e41ce026,
+    type: 3}
+  progressSlider: {fileID: 2087241235}
   isInventoryOpen: 0
 --- !u!1 &721460354
 GameObject:
@@ -4641,18 +4655,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 676613566}
   generatedNumber: {fileID: 2099191560}
-  numButton:
-  - {fileID: 226583987}
-  - {fileID: 1816202918}
-  - {fileID: 1760956527}
-  - {fileID: 1012003165}
-  - {fileID: 1201678109}
-  - {fileID: 867686292}
-  - {fileID: 1797754234}
-  - {fileID: 1412289002}
-  - {fileID: 754826540}
-  - {fileID: 1234104970}
   numCollectedSprite: {fileID: 21300048, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  progress: 0
 --- !u!114 &2099191562
 MonoBehaviour:
   m_ObjectHideFlags: 0
