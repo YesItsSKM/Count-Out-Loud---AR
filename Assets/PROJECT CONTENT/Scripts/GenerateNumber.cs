@@ -5,6 +5,8 @@ public class GenerateNumber : MonoBehaviour
 {
     public CelebrationManager celebrationManager;
 
+    //public UIManager uiManager;
+
     public int numberIndex;                                     // The number that will be randomly generated
 
     public GameObject[] NumberMeshes;                           // Array the 3D models of the numbers to be spawned
@@ -14,7 +16,7 @@ public class GenerateNumber : MonoBehaviour
     public Transform numberOnScreenSpawningTransform;          // Transform to spawn the number in the right place
 
     private System.Random randomNumberGenerator = new System.Random();
-    private List<int> usedNumbers = new List<int>();
+    public List<int> usedNumbers = new List<int>();
 
     // Start is called before the first frame update
     void Start()
