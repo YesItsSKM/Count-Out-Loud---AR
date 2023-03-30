@@ -1002,22 +1002,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d1446092a6d9944a9646b94162708f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generatedNumber: {fileID: 2099191560}
   mainButtonText: {fileID: 1850855279}
   titleText: {fileID: 2074583922}
   numbersInventory: {fileID: 884216952}
-  numButton:
-  - {fileID: 226583987}
-  - {fileID: 1816202918}
-  - {fileID: 1760956527}
-  - {fileID: 1012003165}
-  - {fileID: 1201678109}
-  - {fileID: 867686292}
-  - {fileID: 1797754234}
-  - {fileID: 1412289002}
-  - {fileID: 754826540}
-  - {fileID: 1234104970}
-  numCollectedSprite: {fileID: 21300048, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
 --- !u!1 &721460354
 GameObject:
   m_ObjectHideFlags: 0
@@ -4293,6 +4280,7 @@ GameObject:
   - component: {fileID: 2099191559}
   - component: {fileID: 2099191560}
   - component: {fileID: 2099191561}
+  - component: {fileID: 2099191562}
   m_Layer: 0
   m_Name: Number Spawner
   m_TagString: Untagged
@@ -4349,6 +4337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c26dfc94ae251af45a9075e90b2d38ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  celebrationManager: {fileID: 2099191562}
   numberIndex: 0
   NumberMeshes:
   - {fileID: 919132149155446097, guid: 52b61af23dc21a049b0d3a06e85747c1, type: 3}
@@ -4377,9 +4366,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 676613566}
   generatedNumber: {fileID: 2099191560}
-  mainButtonText: {fileID: 1850855279}
-  titleText: {fileID: 2074583922}
-  numbersInventory: {fileID: 884216952}
   numButton:
   - {fileID: 226583987}
   - {fileID: 1816202918}
@@ -4392,6 +4378,20 @@ MonoBehaviour:
   - {fileID: 754826540}
   - {fileID: 1234104970}
   numCollectedSprite: {fileID: 21300048, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+--- !u!114 &2099191562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099191557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ff822f827b7b548b39b64bf9cef79c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberGenerator: {fileID: 2099191560}
+  trophy: {fileID: 919132149155446097, guid: cb05da6d08c05de4685dd6c12a6457c1, type: 3}
 --- !u!1 &2105804588
 GameObject:
   m_ObjectHideFlags: 0

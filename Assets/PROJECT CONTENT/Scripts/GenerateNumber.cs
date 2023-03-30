@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class GenerateNumber : MonoBehaviour
 {
-    private System.Random randomNumberGenerator = new System.Random();
-    private List<int> usedNumbers = new List<int>();
+    public CelebrationManager celebrationManager;
 
     public int numberIndex;                                     // The number that will be randomly generated
 
@@ -13,6 +12,9 @@ public class GenerateNumber : MonoBehaviour
     public GameObject numberOnScreen;                           // The number which is spawed on the screen
 
     public Transform numberOnScreenSpawningTransform;          // Transform to spawn the number in the right place
+
+    private System.Random randomNumberGenerator = new System.Random();
+    private List<int> usedNumbers = new List<int>();
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,8 @@ public class GenerateNumber : MonoBehaviour
         if (usedNumbers.Count >= 10)
         {
             Debug.Log("All numbers have been generated!");
+
+            celebrationManager.GameEndCelebration();
 
             return;
         }
