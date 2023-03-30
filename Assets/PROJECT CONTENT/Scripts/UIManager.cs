@@ -5,7 +5,7 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-     public GenerateNumber generatedNumber;
+    public GenerateNumber generatedNumber;
 
     public TextMeshProUGUI mainButtonText, titleText;
 
@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] bool isInventoryOpen = false;
 
     public Button[] numButton;
+    public Sprite numCollectedSprite;
 
     // Define the dictionary to map tags to numbers
     Dictionary<string, int> tagToNumberMap;
@@ -63,6 +64,8 @@ public class UIManager : MonoBehaviour
             if (pickedNum == generatedNumber.numberIndex)
             {
                 Debug.Log("Yay!");
+
+                numButton[pickedNum - 1].image.sprite = numCollectedSprite;
             }
             else
             {
