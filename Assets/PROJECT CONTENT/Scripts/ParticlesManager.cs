@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ParticlesManager : MonoBehaviour
@@ -10,12 +8,6 @@ public class ParticlesManager : MonoBehaviour
     void Start()
     {
         ResetParticlesInTheScene();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void ResetParticlesInTheScene()
