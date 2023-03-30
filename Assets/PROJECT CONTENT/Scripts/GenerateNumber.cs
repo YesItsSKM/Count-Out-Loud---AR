@@ -1,7 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GenerateNumber : MonoBehaviour
 {
+    private System.Random randomNumberGenerator = new System.Random();
+    private List<int> usedNumbers = new List<int>();
+
     public int numberIndex;                                     // The number that will be randomly generated
 
     public GameObject[] NumberMeshes;                           // Array the 3D models of the numbers to be spawned
@@ -20,9 +24,17 @@ public class GenerateNumber : MonoBehaviour
     // The main function that handles the number generation & spawning functionalites
     public void GenerateNumberMain()
     {
-        int randomNumber = Random.Range(1, 11);         // Generating a random number between [1-10] (both inclusive)
+        //int randomNum = Random.Range(1, 11);         // Generating a random number between [1-10] (both inclusive)
 
-        numberIndex = randomNumber;                     // Assigning the number index - This will be the number that will be spawned
+        int randomNum = randomNumberGenerator.Next(1, 11);            // int num = rand.Next(1, 11);
+       
+        while (usedNumbers.Contains(randomNum))
+        {
+            randomNum = randomNumberGenerator.Next(1, 11);
+        }
+        usedNumbers.Add(randomNum);
+
+        numberIndex = randomNum;                     // Assigning the number index - This will be the number that will be spawned
 
         Destroy(numberOnScreen);                        // Destroy any previously spawned number
 

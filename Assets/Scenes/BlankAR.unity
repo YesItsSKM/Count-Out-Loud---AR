@@ -541,8 +541,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 676613566}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2099191561}
+        m_TargetAssemblyTypeName: NumberPickerManager, Assembly-CSharp
         m_MethodName: PickTheNumber
         m_Mode: 5
         m_Arguments:
@@ -1006,7 +1006,6 @@ MonoBehaviour:
   mainButtonText: {fileID: 1850855279}
   titleText: {fileID: 2074583922}
   numbersInventory: {fileID: 884216952}
-  isInventoryOpen: 0
   numButton:
   - {fileID: 226583987}
   - {fileID: 1816202918}
@@ -1511,8 +1510,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 676613566}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2099191561}
+        m_TargetAssemblyTypeName: NumberPickerManager, Assembly-CSharp
         m_MethodName: PickTheNumber
         m_Mode: 5
         m_Arguments:
@@ -1645,8 +1644,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 676613566}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2099191561}
+        m_TargetAssemblyTypeName: NumberPickerManager, Assembly-CSharp
         m_MethodName: PickTheNumber
         m_Mode: 5
         m_Arguments:
@@ -2017,8 +2016,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 676613566}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2099191561}
+        m_TargetAssemblyTypeName: NumberPickerManager, Assembly-CSharp
         m_MethodName: PickTheNumber
         m_Mode: 5
         m_Arguments:
@@ -2151,8 +2150,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 676613566}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2099191561}
+        m_TargetAssemblyTypeName: NumberPickerManager, Assembly-CSharp
         m_MethodName: PickTheNumber
         m_Mode: 5
         m_Arguments:
@@ -2285,8 +2284,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 676613566}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2099191561}
+        m_TargetAssemblyTypeName: NumberPickerManager, Assembly-CSharp
         m_MethodName: PickTheNumber
         m_Mode: 5
         m_Arguments:
@@ -2886,8 +2885,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 676613566}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2099191561}
+        m_TargetAssemblyTypeName: NumberPickerManager, Assembly-CSharp
         m_MethodName: PickTheNumber
         m_Mode: 5
         m_Arguments:
@@ -3465,8 +3464,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 676613566}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2099191561}
+        m_TargetAssemblyTypeName: NumberPickerManager, Assembly-CSharp
         m_MethodName: PickTheNumber
         m_Mode: 5
         m_Arguments:
@@ -3599,8 +3598,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 676613566}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2099191561}
+        m_TargetAssemblyTypeName: NumberPickerManager, Assembly-CSharp
         m_MethodName: PickTheNumber
         m_Mode: 5
         m_Arguments:
@@ -3733,8 +3732,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 676613566}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2099191561}
+        m_TargetAssemblyTypeName: NumberPickerManager, Assembly-CSharp
         m_MethodName: PickTheNumber
         m_Mode: 5
         m_Arguments:
@@ -4293,6 +4292,7 @@ GameObject:
   - component: {fileID: 2099191558}
   - component: {fileID: 2099191559}
   - component: {fileID: 2099191560}
+  - component: {fileID: 2099191561}
   m_Layer: 0
   m_Name: Number Spawner
   m_TagString: Untagged
@@ -4363,6 +4363,35 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: 554dd22086ea8aa4c8135be928fc3817, type: 3}
   numberOnScreen: {fileID: 0}
   numberOnScreenSpawningTransform: {fileID: 906686994}
+--- !u!114 &2099191561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099191557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320a97692f8b26249990946542504417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiManager: {fileID: 676613566}
+  generatedNumber: {fileID: 2099191560}
+  mainButtonText: {fileID: 1850855279}
+  titleText: {fileID: 2074583922}
+  numbersInventory: {fileID: 884216952}
+  numButton:
+  - {fileID: 226583987}
+  - {fileID: 1816202918}
+  - {fileID: 1760956527}
+  - {fileID: 1012003165}
+  - {fileID: 1201678109}
+  - {fileID: 867686292}
+  - {fileID: 1797754234}
+  - {fileID: 1412289002}
+  - {fileID: 754826540}
+  - {fileID: 1234104970}
+  numCollectedSprite: {fileID: 21300048, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
 --- !u!1 &2105804588
 GameObject:
   m_ObjectHideFlags: 0
