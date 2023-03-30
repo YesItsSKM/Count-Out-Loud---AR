@@ -2,26 +2,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
-    public GenerateNumber generatedNumber;
+    public GenerateNumber generatedNumber;                                  // Accessing the Generated Number Class
 
-    public TextMeshProUGUI mainButtonText, titleText;
+    public TextMeshProUGUI mainButtonText, titleText;                       // Texts that might have to be changed later
 
-    public Canvas numbersInventory;
+    public Canvas numbersInventory;                                         // Showing the inventory UI
 
-    [SerializeField] bool isInventoryOpen = false;
+    bool isInventoryOpen = false;                                            // Check variable to see if Inventory is open or not
 
-    public Button[] numButton;
-    public Sprite numCollectedSprite;
+    public Button[] numButton;                                              // Array of number buttons
+    
+    public Sprite numCollectedSprite;                                       // Button background - Which gets updated once the user gets the number right
 
     // Define the dictionary to map tags to numbers
     Dictionary<string, int> tagToNumberMap;
 
     public void Start()
     {
-
         // Initialize the dictionary
         tagToNumberMap = new Dictionary<string, int>();
 
@@ -66,6 +67,14 @@ public class UIManager : MonoBehaviour
                 Debug.Log("Yay!");
 
                 numButton[pickedNum - 1].image.sprite = numCollectedSprite;
+
+                // TO DO: CUE THE PARTICLE EFFECTS
+
+                StartCoroutine(DelayMethod());
+
+                ToggleInventory();
+
+                generatedNumber.GenerateNumberMain();
             }
             else
             {
@@ -76,6 +85,15 @@ public class UIManager : MonoBehaviour
         {
             Debug.LogWarning("No corresponding number found for tag: " + buttonTag);
         }
+    }
+
+
+
+    IEnumerator DelayMethod()
+    {
+        Debug.Log("Starting delayed method.");
+        yield return new WaitForSeconds(1.0f);
+        Debug.Log("Delayed method finished.");
     }
 
 }
