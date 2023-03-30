@@ -24,7 +24,12 @@ public class GenerateNumber : MonoBehaviour
     // The main function that handles the number generation & spawning functionalites
     public void GenerateNumberMain()
     {
-        //int randomNum = Random.Range(1, 11);         // Generating a random number between [1-10] (both inclusive)
+        if (usedNumbers.Count >= 10)
+        {
+            Debug.Log("All numbers have been generated!");
+
+            return;
+        }
 
         int randomNum = randomNumberGenerator.Next(1, 11);            // int num = rand.Next(1, 11);
        
@@ -34,7 +39,7 @@ public class GenerateNumber : MonoBehaviour
         }
         usedNumbers.Add(randomNum);
 
-        numberIndex = randomNum;                     // Assigning the number index - This will be the number that will be spawned
+        numberIndex = randomNum;                        // Assigning the number index - This will be the number that will be spawned
 
         Destroy(numberOnScreen);                        // Destroy any previously spawned number
 
