@@ -4,6 +4,8 @@ public class CelebrationManager : MonoBehaviour
 {
     public GenerateNumber numberGenerator;
 
+    public ParticlesManager particlesManager;
+
     public UIManager uiManager;
 
     public GameObject trophy;
@@ -35,18 +37,22 @@ public class CelebrationManager : MonoBehaviour
         uiManager.mainButton.gameObject.SetActive(false);
         uiManager.restartButton.gameObject.SetActive(true);
 
+        particlesManager.PlayGameWinnerParticles();
+
     }
 
 
     // METHOD FOR RESTARTING THE GAME
     public void RestartGame()
     {
+        Destroy(trophyOnScreen);
+        
         numberGenerator.usedNumbers.Clear();
 
         uiManager.ResetUI();
 
-        numberGenerator.GenerateNumberMain();
+        particlesManager.ResetParticlesInTheScene();
 
-        Destroy(trophyOnScreen);
+        numberGenerator.GenerateNumberMain();
     }
 }
