@@ -28,8 +28,8 @@ public class CelebrationManager : MonoBehaviour
         trophyOnScreen = Instantiate(trophy, numberGenerator.numberOnScreenSpawningTransform.transform);
 
         // Setting trophy's transform
-        trophyOnScreen.transform.localPosition = new Vector3(0, 0, -0.3f);
-        trophyOnScreen.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        trophyOnScreen.transform.localPosition = new Vector3(0, 0, -0.003f);
+        trophyOnScreen.transform.localScale = new Vector3(0.003f, 0.003f, 0.003f);
         trophyOnScreen.transform.localRotation = Quaternion.Euler(90, 0, 0);
 
         uiManager.titleText.text = "WINNER!";
@@ -41,6 +41,14 @@ public class CelebrationManager : MonoBehaviour
 
         uiManager.CallTextPrompt("You did great. You won!!", 2f);
 
+        if (numberGenerator.audioManager.numbersAudioSource.isPlaying)
+        {
+            numberGenerator.audioManager.numbersAudioSource.Stop();
+        }
+
+        numberGenerator.audioManager.gameAudioSource.clip = numberGenerator.audioManager.audioClips[3];
+
+        numberGenerator.audioManager.gameAudioSource.Play();
     }
 
 
