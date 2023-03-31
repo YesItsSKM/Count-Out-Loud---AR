@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,11 +9,13 @@ public class NumberPickerManager : MonoBehaviour
 
     public GenerateNumber generatedNumber;                                  // Accessing the Generated Number Class
 
+    public ParticlesManager particlesManager;
+
     public Sprite numCollectedSprite;                                       // Button background - Which gets updated once the user gets the number right
 
     Dictionary<string, int> tagToNumberMap;                                  // Defining the dictionary to map tags to numbers
 
-    public float progress = 0f;                                              // Slider progress
+    float progress = 0f;                                                     // Slider progress
 
     // Start is called before the first frame update
     void Start()
@@ -50,13 +53,19 @@ public class NumberPickerManager : MonoBehaviour
             {
                 Debug.Log("Yay!");
 
-                uiManager.progressSlider.value += 0.1f;                 // Correct number picked; Updating progress
+                progress = uiManager.progressSlider.value;                 // Correct number picked; Updating progress
+
+                progress += 0.1f;
+
+                uiManager.score.text = "Score: " + Mathf.FloorToInt(progress*100);
+
+                StartCoroutine(AnimateProgressBar(progress));
 
                 uiManager.numberButtons[pickedNum - 1].image.sprite = numCollectedSprite;       // Changing that button's backgound sprite to show that number has been chosen
 
-                // TO DO: CUE THE PARTICLE EFFECTS
+                particlesManager.PlayCorrectNumberSelectedParticles();
 
-                uiManager.ToggleInventory();                        // Toggling the inventory - OFF
+                StartCoroutine(ToggleInventoryOff());
 
                 generatedNumber.GenerateNumberMain();               // Generating another number
             }
@@ -69,5 +78,29 @@ public class NumberPickerManager : MonoBehaviour
         {
             Debug.LogWarning("No corresponding number found for tag: " + buttonTag);        // No button tag was found
         }
+    }
+
+    IEnumerator ToggleInventoryOff()
+    {
+        yield return new WaitForSeconds(2f);
+
+        uiManager.ToggleInventory();                        // Toggling the inventory - OFF
+    }
+
+    IEnumerator AnimateProgressBar(float targetProgress)
+    {
+        float startTime = Time.time;
+        float startProgress = uiManager.progressSlider.value;
+        float duration = 1f; // 1 second animation duration
+
+        while (Time.time < startTime + duration)
+        {
+            float elapsed = Time.time - startTime;
+            float progress = Mathf.Lerp(startProgress, targetProgress, elapsed / duration);
+            uiManager.progressSlider.value = progress;
+            yield return null;
+        }
+
+        uiManager.progressSlider.value = targetProgress;
     }
 }
