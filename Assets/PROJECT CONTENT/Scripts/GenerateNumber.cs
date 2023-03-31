@@ -1,11 +1,14 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class GenerateNumber : MonoBehaviour
 {
     public CelebrationManager celebrationManager;
 
-    //public UIManager uiManager;
+    public AudioManager audioManager;
+
+    public UIManager uiManager;
 
     public int numberIndex;                                     // The number that will be randomly generated
 
@@ -50,13 +53,43 @@ public class GenerateNumber : MonoBehaviour
         numberIndex = randomNum;                        // Assigning the number index - This will be the number that will be spawned
 
         Destroy(numberOnScreen);                        // Destroy any previously spawned number
+        
+        StartCoroutine(SpawnTheNumber(numberIndex));
 
+        StartCoroutine(CueTheAudio());
+    }
+
+    IEnumerator CueTheAudio()
+    {
+        yield return new WaitForSeconds(2.5f);
+
+        audioManager.gameAudioSource.clip = audioManager.audioClips[0];
+
+        audioManager.gameAudioSource.Play();
+    }
+
+    IEnumerator SpawnTheNumber(int numberIndex)
+    {
         // Instantiating the number on screen based on the generated randomNumber
-        numberOnScreen = Instantiate(NumberMeshes[numberIndex - 1], numberOnScreenSpawningTransform.transform);        
+        numberOnScreen = Instantiate(NumberMeshes[numberIndex - 1], numberOnScreenSpawningTransform.transform);
 
         // Setting it's transform to zero as the number will inherit it's parent's transform
         numberOnScreen.transform.localPosition = new Vector3(0, 0, 0);
         numberOnScreen.transform.localRotation = Quaternion.identity;
-    }
 
+        float startTime = Time.time;
+        float duration = 1f; // Animation duration
+
+        while (Time.time < startTime + duration)
+        {
+            float elapsed = Time.time - startTime;
+            float progress = Mathf.Lerp(0f, 1f, elapsed / duration);
+            numberOnScreen.transform.localScale = new Vector3(progress, progress, progress);
+            yield return null;
+        }
+
+        numberOnScreen.transform.localScale = Vector3.one;
+
+        uiManager.CallTextPrompt("Count out loud the number you see!", 3f);
+    }
 }

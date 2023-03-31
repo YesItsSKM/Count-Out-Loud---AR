@@ -11,6 +11,8 @@ public class NumberPickerManager : MonoBehaviour
 
     public ParticlesManager particlesManager;
 
+    public AudioManager audioManager;
+
     public Sprite numCollectedSprite;                                       // Button background - Which gets updated once the user gets the number right
 
     Dictionary<string, int> tagToNumberMap;                                  // Defining the dictionary to map tags to numbers
@@ -53,6 +55,10 @@ public class NumberPickerManager : MonoBehaviour
             {
                 Debug.Log("Yay!");
 
+                audioManager.numbersAudioSource.clip = audioManager.audioClips[2];
+
+                audioManager.numbersAudioSource.Play();
+
                 progress = uiManager.progressSlider.value;                 // Correct number picked; Updating progress
 
                 progress += 0.1f;
@@ -71,6 +77,10 @@ public class NumberPickerManager : MonoBehaviour
             }
             else
             {
+                audioManager.numbersAudioSource.clip = audioManager.audioClips[1];
+
+                audioManager.numbersAudioSource.Play();
+
                 Debug.Log("Sorry try again!");                      // Wrong button pressed - Don't change anything
             }
         }

@@ -6,7 +6,7 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
 
-    public TextMeshProUGUI mainButtonText, titleText, score;                       // Texts that might have to be changed later
+    public TextMeshProUGUI mainButtonText, titleText, score, textPromptText;                       // Texts that might have to be changed later
 
     public Canvas numbersInventory;                                         // Inventory UI element
 
@@ -17,8 +17,10 @@ public class UIManager : MonoBehaviour
     public Sprite defaultNumberButtonSprite;                               // This is the default background sprite (image) for the number buttons
 
     public Slider progressSlider;                                           // Assigning the progress slider (from UI)
+    
+    public Canvas textPrompt;                                               // Assigning the text prompt object
  
-    [SerializeField] bool isInventoryOpen = false;                           // Check variable to see if Inventory is open or not
+    bool isInventoryOpen = false;                           // Check variable to see if Inventory is open or not
 
     public void Start()
     {
@@ -55,6 +57,7 @@ public class UIManager : MonoBehaviour
         mainButton.gameObject.SetActive(true);
         numbersInventory.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
+        textPrompt.gameObject.SetActive(false);
 
         progressSlider.value = 0f;
 
@@ -64,6 +67,11 @@ public class UIManager : MonoBehaviour
         {
             button.image.sprite = defaultNumberButtonSprite;
         }
+    }
+
+    public void CallTextPrompt(string textToPrompt, float duration)
+    {
+        StartCoroutine(TextPromt(textToPrompt, duration));
     }
 
     IEnumerator AnimateInventoryToggle(bool inventoryState)
@@ -104,8 +112,42 @@ public class UIManager : MonoBehaviour
 
             numbersInventory.gameObject.SetActive(false);
         }
+    }
 
+    IEnumerator TextPromt(string promptThisText, float duration)
+    {
+        float startTime = Time.time;
+        float animDuration = 0.3f; // Animation duration
         
+        textPrompt.gameObject.SetActive(true);
+
+        textPromptText.text = promptThisText;
+
+        while (Time.time < startTime + duration)
+        {
+            float elapsed = Time.time - startTime;
+            float progress = Mathf.Lerp(0f, 1f, elapsed / animDuration);
+            textPrompt.transform.localScale = new Vector3(progress, progress, 1f);
+            yield return null;
+        }
+
+        textPrompt.transform.localScale = Vector3.one;
+
+        yield return new WaitForSeconds(duration);
+
+        startTime = Time.time;
+        animDuration = 0.3f; // Animation duration
+
+        while (Time.time < startTime + duration)
+        {
+            float elapsed = Time.time - startTime;
+            float progress = Mathf.Lerp(1f, 0f, elapsed / animDuration);
+            textPrompt.transform.localScale = new Vector3(progress, progress, 1f);
+            yield return null;
+        }
+
+        textPromptText.text = "";
+        textPrompt.gameObject.SetActive(false);
     }
 
 }
