@@ -39,6 +39,8 @@ public class CelebrationManager : MonoBehaviour
 
         particlesManager.PlayGameWinnerParticles();
 
+        uiManager.CallTextPrompt("You did great. You won!!", 2f);
+
     }
 
 

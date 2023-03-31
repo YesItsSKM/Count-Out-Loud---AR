@@ -22,6 +22,8 @@ public class UIManager : MonoBehaviour
  
     bool isInventoryOpen = false;                           // Check variable to see if Inventory is open or not
 
+    Coroutine textPromptCoroutine, toggleInventoryCoroutine;
+
     public void Start()
     {
         ResetUI();                                                           // Resetting the UI
@@ -43,7 +45,12 @@ public class UIManager : MonoBehaviour
         // Hiding title text
         titleText.gameObject.SetActive(!isInventoryOpen);
 
-        StartCoroutine(AnimateInventoryToggle(isInventoryOpen));
+        if (toggleInventoryCoroutine != null)
+        {
+            StopCoroutine(toggleInventoryCoroutine);
+        }
+
+        toggleInventoryCoroutine = StartCoroutine(AnimateInventoryToggle(isInventoryOpen));
     }
 
 
@@ -71,7 +78,12 @@ public class UIManager : MonoBehaviour
 
     public void CallTextPrompt(string textToPrompt, float duration)
     {
-        StartCoroutine(TextPromt(textToPrompt, duration));
+        if (textPromptCoroutine != null)
+        {
+            StopCoroutine(textPromptCoroutine);
+        }
+
+        textPromptCoroutine = StartCoroutine(TextPromt(textToPrompt, duration));
     }
 
     IEnumerator AnimateInventoryToggle(bool inventoryState)

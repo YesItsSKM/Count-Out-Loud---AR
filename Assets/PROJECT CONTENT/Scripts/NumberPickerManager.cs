@@ -81,6 +81,8 @@ public class NumberPickerManager : MonoBehaviour
 
                 audioManager.numbersAudioSource.Play();
 
+                uiManager.CallTextPrompt("Try again", 1f);
+
                 Debug.Log("Sorry try again!");                      // Wrong button pressed - Don't change anything
             }
         }
